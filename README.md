@@ -1,46 +1,28 @@
-# profile-app-practice
+# COACHTECH お問い合わせフォーム
 
 ## 概要
-COACHTECH 教材 Tutorial 9-1「Laravel基礎ハンズオン」で作成した成果物です。
+プロジェクトの目的と、実装した機能の概要説明
 （**ここに、何を作ったかを1〜2行で書きましょう**）
 
-## 使用技術
-- PHP 8.x
-- Laravel 10.x
-- Blade テンプレート
+## ER図
+自分で設計したER図の画像またはMermaid記法でのテキスト
+カーディナリティ（1対多、多対多などの関連の数量関係）が正しく記述されていること
 
-## 学んだこと
-- ルーティング→コントローラー→ビューの流れ
-- コントローラからビューへのデータの受け渡し
-- 
-
-## 動作確認
+## 環境構築手順
 1. クローン
 ```bash
-git clone https://github.com/ayami-makita/profile-app-practice2
-```
-
-2. CDで移動
-```bash
-cd profile-app-practice2
-```
-
-3. sail起動・確認
-```bash
-./vendor/bin/sail up -d
-```
-sailを起動してください。
-```bash
-./vendor/bin/sail ps
-```
-コンテナの状態を確認し、すべてのコンテナがUp状態になっていればOKです。
-
-4. アプリケーションキーを生成
-```bash
-./vendor/bin/sail artisan key:generate
+git clone https://github.com/ayami-makita/
 ```
 
 
-5. 動作確認
-[自己紹介ページ](http://localhost/profile)
-→プロフィール画面が表示されれば、環境構築は成功です。
+## 使用技術
+Laravel 10, MySQL 8.0, Nginx, Dockerなど、使用した技術スタック一覧
+
+## APIエンドポイント一覧
+実装したAPIのエンドポイント一覧（メソッド・パス・概要）
+
+## 開発環境URL
+開発環境のURL（例: http://localhost ）
+
+## 作成者
+牧田　彩実
