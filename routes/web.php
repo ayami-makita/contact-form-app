@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// 公開トップ画面（お問い合わせフォーム入力ページ / PG01）
+// 公開トップ画面（お問い合わせフォーム）
 Route::get('/', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contacts/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
+Route::post('/contacts', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/thanks', [ContactController::class, 'thanks'])->name('contact.thanks');
+
 
 // 認証が必要なルート（管理画面 / PG05）
 Route::middleware('auth')->group(function () {
