@@ -30,4 +30,5 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/contacts/{contact}', [AdminController::class, 'show'])->name('show');
     // 削除
     Route::delete('/contacts/{contact}', [AdminController::class, 'destroy'])->name('destroy');
+
 });

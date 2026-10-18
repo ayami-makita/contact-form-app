@@ -6,10 +6,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class IndexContactRequest extends FormRequest
 {
+
     public function authorize(): bool
     {
         return true; // 管理画面のミドルウェアや認証でガードするため true
     }
+
 
     public function rules(): array
     {
@@ -21,3 +23,4 @@ class IndexContactRequest extends FormRequest
         ];
     }
 }
+

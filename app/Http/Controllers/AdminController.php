@@ -33,17 +33,19 @@ class AdminController extends Controller
         }
 
         // カテゴリ検索
-        if ($request->filled('category_id')) {
-            $query->where('category_id', $request->input('category_id'));
+        if ($categoryId = $request->validated('category_id')) {
+            $query->where('category_id', $categoryId);
         }
 
         // 日付検索
-        if ($request->filled('date')) {
-            $query->whereDate('created_at', $request->input('date'));
+        if ($date = $request->validated('date')) {
+            $query->whereDate('created_at', $date);
         }
 
+        // 7件ごとにページネーション表示
         $contacts = $query->latest()->paginate(7)->withQueryString();
-        
+
+        // カテゴリ一覧
         $categories = Category::all();
         $tags = \App\Models\Tag::all();
 
@@ -51,10 +53,11 @@ class AdminController extends Controller
     }
 
     /**
-     * 管理画面 お問い合わせ詳細ページ
+     * PG05-2:管理画面 お問い合わせ詳細ページ
      */
     public function show($id)
     {
+        // Eager LoadingでN+1問題を避ける
         $contact = Contact::with(['category', 'tags'])->findOrFail($id);
 
         return view('admin.show', compact('contact'));
