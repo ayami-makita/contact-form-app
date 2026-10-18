@@ -6,7 +6,7 @@
 
 
 ## ER図
-<img src="docs/images/ER図.jpg" alt="ER図" width="700">
+<img src="docs/images/er-diagram.jpg" alt="ER図" width="700">
 
 
 ## 使用技術（技術スタック）
