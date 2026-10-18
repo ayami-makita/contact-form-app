@@ -10,15 +10,15 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     /**
-     * PG05: 管理画面 お問い合わせ一覧・検索ページ
+     * 管理画面 お問い合わせ一覧・検索ページ
      */
     public function index(IndexContactRequest $request)
     {
-        // Eager LoadingでN+1問題を避ける
         $query = Contact::with(['category', 'tags']);
-    
-        // キーワード検索（名前・メールアドレス）
-        if ($keyword = $request->validated('keyword')) {
+
+        // キーワード検索（名前の姓・名、またはメールアドレスの部分一致）
+        if ($request->filled('keyword')) {
+            $keyword = $request->input('keyword');
             $query->where(function ($q) use ($keyword) {
                 $q->where('first_name', 'like', "%{$keyword}%")
                   ->orWhere('last_name', 'like', "%{$keyword}%")
@@ -26,8 +26,9 @@ class AdminController extends Controller
             });
         }
 
-        // 性別検索
-        if ($gender = $request->validated('gender')) {
+        // 性別検索（0以外の場合のみ絞り込む）
+        $gender = $request->input('gender');
+        if (!is_null($gender) && $gender !== '' && $gender !== '0') {
             $query->where('gender', $gender);
         }
 
@@ -46,8 +47,9 @@ class AdminController extends Controller
 
         // カテゴリ一覧
         $categories = Category::all();
+        $tags = \App\Models\Tag::all();
 
-        return view('admin.index', compact('contacts', 'categories'));
+        return view('admin.index', compact('contacts', 'categories', 'tags'));
     }
 
     /**
@@ -60,7 +62,7 @@ class AdminController extends Controller
 
         return view('admin.show', compact('contact'));
     }
-    
+
     /**
      * お問い合わせデータの削除
      */

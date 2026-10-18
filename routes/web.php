@@ -24,7 +24,11 @@ Route::get('/thanks', [ContactController::class, 'thanks'])->name('contact.thank
 
 // 管理画面ルート（認証必須）
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    // 一覧・検索
     Route::get('/', [AdminController::class, 'index'])->name('index');
-    Route::get('/{id}', [AdminController::class, 'show'])->name('show'); // 追加
-    Route::delete('/{id}', [AdminController::class, 'destroy'])->name('destroy');
+    // 詳細表示（要件: GET /admin/contacts/{contact}）
+    Route::get('/contacts/{contact}', [AdminController::class, 'show'])->name('show');
+    // 削除
+    Route::delete('/contacts/{contact}', [AdminController::class, 'destroy'])->name('destroy');
+
 });
