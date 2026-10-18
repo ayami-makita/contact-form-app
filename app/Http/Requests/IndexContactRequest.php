@@ -9,7 +9,7 @@ class IndexContactRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return true; // 管理画面のミドルウェアや認証でガードするため true
+        return true;
     }
 
 
