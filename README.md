@@ -76,19 +76,19 @@ exec \$SHELL
 ## APIエンドポイント一覧
 **公開画面**
 メソッド   パス                  概要
-GET        /                    お問い合わせ入力画面（トップ）
-POST       /contacts/confirm    お問い合わせ内容確認画面
-POST       /contacts            お問い合わせデータ保存処理
-GET        /thanks              サンクスページ（送信完了）
+GET        /                    お問い合わせ入力画面（トップ）　　
+POST       /contacts/confirm    お問い合わせ内容確認画面　　
+POST       /contacts            お問い合わせデータ保存処理　　
+GET        /thanks              サンクスページ（送信完了）　　
 
 **管理画面（要認証）**
 メソッド   パス                         概要
-GET        /admin                      管理画面一覧・検索表示
-GET        /admin/contacts/{contact}   お問い合わせ詳細表示
-DELETE     /admin/contacts/{contact}   お問い合わせ削除処理
-POST       /admin/tags                 タグ新規登録処理
-PUT        /admin/tags/{tag}           タグ更新処理
-DELETE     /admin/tags/{tag}           タグ削除処理
+GET        /admin                      管理画面一覧・検索表示　　
+GET        /admin/contacts/{contact}   お問い合わせ詳細表示　　
+DELETE     /admin/contacts/{contact}   お問い合わせ削除処理　　
+POST       /admin/tags                 タグ新規登録処理　　
+PUT        /admin/tags/{tag}           タグ更新処理　　
+DELETE     /admin/tags/{tag}           タグ削除処理　　
 
 ## 開発環境URL
 お問い合わせフォーム: http://localhost
