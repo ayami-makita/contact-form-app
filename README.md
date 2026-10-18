@@ -14,6 +14,12 @@
 git clone https://github.com/ayami-makita/
 ```
 
+.Vite開発サーバーの起動
+```bash
+sail npm run dev
+```
+
+
 
 ## 使用技術
 Laravel 10, MySQL 8.0, Nginx, Dockerなど、使用した技術スタック一覧
