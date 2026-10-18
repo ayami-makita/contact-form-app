@@ -13,6 +13,7 @@ class ContactModelTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    // カテゴリには多くのお問い合わせが紐づくこと
     public function a_category_has_many_contacts(): void
     {
         $category = Category::factory()->create();
@@ -22,6 +23,7 @@ class ContactModelTest extends TestCase
     }
 
     /** @test */
+    // お問い合わせは1つのカテゴリに属すること
     public function a_contact_belongs_to_a_category(): void
     {
         $category = Category::factory()->create();
@@ -32,6 +34,7 @@ class ContactModelTest extends TestCase
     }
 
     /** @test */
+    // お問い合わせとタグの間で多対多の同期（sync）が正しく行えること
     public function a_contact_can_sync_tags(): void
     {
         $contact = Contact::factory()->create();

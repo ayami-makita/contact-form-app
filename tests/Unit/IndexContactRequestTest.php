@@ -22,6 +22,7 @@ class IndexContactRequestTest extends TestCase
     }
 
     /** @test */
+    // 空のデータ（パラメータなし）でもバリデーションが通ること
     public function search_validation_passes_with_empty_data(): void
     {
         $validator = $this->validate([]);
@@ -30,6 +31,7 @@ class IndexContactRequestTest extends TestCase
     }
 
     /** @test */
+    // 有効な検索パラメータ（キーワード、性別、カテゴリID、日付）でバリデーションが通ること
     public function search_validation_passes_with_valid_parameters(): void
     {
         $category = Category::factory()->create();
@@ -45,6 +47,7 @@ class IndexContactRequestTest extends TestCase
     }
 
     /** @test */
+    // 性別に無効な値が指定された場合にバリデーションエラーになること
     public function search_validation_fails_when_gender_is_invalid(): void
     {
         $validator = $this->validate([
@@ -56,6 +59,7 @@ class IndexContactRequestTest extends TestCase
     }
 
     /** @test */
+    // 存在しないカテゴリIDが指定された場合にバリデーションエラーになること
     public function search_validation_fails_when_category_id_does_not_exist(): void
     {
         $validator = $this->validate([
@@ -71,6 +75,7 @@ class IndexContactRequestTest extends TestCase
     }
 
     /** @test */
+    // 日付フォーマットが不正な場合にバリデーションエラーになること
     public function search_validation_fails_when_date_is_invalid(): void
     {
         $validator = $this->validate([
